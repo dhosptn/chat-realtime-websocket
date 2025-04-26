@@ -64,12 +64,10 @@ Tampilan aplikasi:
 
 ## 📍 Demo Online
 
-(Opsional) Jika di-upload ke platform seperti **Glitch** atau **Replit**, link demo bisa ditulis di sini.
-
-Contoh:
-
 ```
-([chat-realtime-websocket.up.railway.app] https://chat-realtime-websocket.up.railway.app)
+
+[chat-realtime-websocket](https://chat-realtime-websocket.up.railway.app)
+
 ```
 
 ---
