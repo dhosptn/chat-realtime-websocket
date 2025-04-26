@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat Sederhana</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary-color: #4f46e5;
+        --primary-light: #6366f1;
+        --text-color: #333;
+        --light-bg: #f9fafb;
+        --border-color: #e5e7eb;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --radius: 8px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: var(--text-color);
+        background-color: #f3f4f6;
+        line-height: 1.6;
+        max-width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 16px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .header {
+        background-color: white;
+        border-radius: var(--radius) var(--radius) 0 0;
+        padding: 16px 20px;
+        box-shadow: var(--shadow);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        z-index: 2;
+      }
+
+      .header-icon {
+        font-size: 24px;
+        color: var(--primary-color);
+      }
+
+      .header h1 {
+        font-size: 20px;
+        font-weight: 600;
+        margin: 0;
+        flex: 1;
+      }
+
+      .online-indicator {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 14px;
+        color: #10b981;
+      }
+
+      .online-dot {
+        width: 8px;
+        height: 8px;
+        background-color: #10b981;
+        border-radius: 50%;
+      }
+
+      .chat-container {
+        flex: 1;
+        background-color: white;
+        border-radius: 0 0 var(--radius) var(--radius);
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      #messages {
+        list-style: none;
+        padding: 20px;
+        overflow-y: auto;
+        flex: 1;
+      }
+
+      #messages li {
+        padding: 10px 16px;
+        margin-bottom: 12px;
+        max-width: 80%;
+        border-radius: 16px;
+        position: relative;
+        word-wrap: break-word;
+      }
+
+      #messages li.sent {
+        background-color: var(--primary-color);
+        color: white;
+        align-self: flex-end;
+        margin-left: auto;
+        border-bottom-right-radius: 4px;
+      }
+
+      #messages li.received {
+        background-color: var(--light-bg);
+        border-bottom-left-radius: 4px;
+      }
+
+      .message-time {
+        font-size: 11px;
+        opacity: 0.8;
+        margin-top: 4px;
+        display: block;
+        text-align: right;
+      }
+
+      .input-area {
+        display: flex;
+        padding: 12px 16px;
+        background-color: white;
+        border-top: 1px solid var(--border-color);
+      }
+
+      #form {
+        display: flex;
+        width: 100%;
+        position: relative;
+      }
+
+      #input {
+        flex: 1;
+        padding: 12px 16px;
+        border-radius: 24px;
+        border: 1px solid var(--border-color);
+        outline: none;
+        font-size: 16px;
+        transition: all 0.3s;
+      }
+
+      #input:focus {
+        border-color: var(--primary-light);
+        box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+      }
+
+      button {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 24px;
+        padding: 0 20px;
+        margin-left: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background-color 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      button:hover {
+        background-color: var(--primary-light);
+      }
+
+      .send-icon {
+        margin-left: 4px;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 600px) {
+        .container {
+          padding: 8px;
+        }
+
+        #messages li {
+          max-width: 90%;
+        }
+
+        button {
+          width: 44px;
+          padding: 0;
+        }
+
+        button span {
+          display: none;
+        }
+
+        .send-icon {
+          margin-left: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="header-icon">
+          <i class="fas fa-comments"></i>
+        </div>
+        <h1>Chat Sederhana</h1>
+        <div class="online-indicator">
+          <div class="online-dot"></div>
+          <span>Online</span>
+        </div>
+      </div>
+
+      <div class="chat-container">
+        <ul id="messages"></ul>
+
+        <div class="input-area">
+          <form id="form" action="">
+            <input id="input" autocomplete="off" placeholder="Ketik pesan..." />
+            <button type="submit">
+              <span>Kirim</span>
+              <i class="fas fa-paper-plane send-icon"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+      const form = document.getElementById('form');
+      const input = document.getElementById('input');
+      const messages = document.getElementById('messages');
+
+      // Format waktu
+      function getTimeString() {
+        const now = new Date();
+        return (
+          now.getHours().toString().padStart(2, '0') +
+          ':' +
+          now.getMinutes().toString().padStart(2, '0')
+        );
+      }
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (input.value) {
+          // Menambahkan pesan yang dikirim ke tampilan
+          addMessage(input.value, 'sent');
+
+          // Mengirim pesan ke server
+          socket.emit('chat message', input.value);
+          input.value = '';
+        }
+      });
+
+      socket.on('chat message', (msg) => {
+        // Menambahkan pesan yang diterima ke tampilan
+        if (!document.querySelector(`li[data-msg="${msg}"].sent`)) {
+          addMessage(msg, 'received');
+        }
+      });
+
+      function addMessage(message, type) {
+        const item = document.createElement('li');
+        item.className = type;
+        item.setAttribute('data-msg', message);
+
+        const messageContent = document.createTextNode(message);
+        item.appendChild(messageContent);
+
+        // Menambahkan timestamp
+        const timeSpan = document.createElement('span');
+        timeSpan.className = 'message-time';
+        timeSpan.textContent = getTimeString();
+        item.appendChild(timeSpan);
+
+        messages.appendChild(item);
+
+        // Scroll ke bawah
+        messages.scrollTop = messages.scrollHeight;
+      }
+
+      // Responsif focus pada input saat tombol spasi ditekan
+      document.addEventListener('keydown', function (e) {
+        if (e.key === ' ' && document.activeElement !== input) {
+          e.preventDefault();
+          input.focus();
+        }
+      });
+    </script>
+  </body>
+</html>
