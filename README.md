@@ -64,11 +64,7 @@ Tampilan aplikasi:
 
 ## 📍 Demo Online
 
-```
-
-[chat-realtime-websocket](https://chat-realtime-websocket.up.railway.app)
-
-```
+[https://chat-realtime-websocket.up.railway.app]
 
 ---
 
