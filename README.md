@@ -69,7 +69,7 @@ Tampilan aplikasi:
 Contoh:
 
 ```
-https://your-chat-demo.glitch.me/
+(https://chat-realtime-websocket.up.railway.app)
 ```
 
 ---
