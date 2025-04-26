@@ -79,12 +79,6 @@ Tampilan aplikasi:
 
 ---
 
-## 📅 License
-
-This project is open source and free to use.
-
----
-
 ## 🌐 Referensi
 
 - [Socket.IO Documentation](https://socket.io/docs/v4/)
