@@ -64,13 +64,7 @@ Tampilan aplikasi:
 
 ## 📍 Demo Online
 
-(Opsional) Jika di-upload ke platform seperti **Glitch** atau **Replit**, link demo bisa ditulis di sini.
-
-Contoh:
-
-```
-https://your-chat-demo.glitch.me/
-```
+[https://chat-realtime-websocket.up.railway.app]
 
 ---
 
